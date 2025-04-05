@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>斗栱知识问答</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .question {
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="game">
+    <h2>斗栱知识问答</h2>
+    <div class="question" id="question1">
+      <p>斗栱一般位于中国古代建筑的哪个部位？</p >
+      <button onclick="checkAnswer(0, 1)">屋顶</button>
+      <button onclick="checkAnswer(1, 1)">柱子与梁枋之间</button>
+      <button onclick="checkAnswer(2, 1)">地基</button>
+      <p id="result1"></p >
+    </div>
+    <div class="question" id="question2">
+      <p>斗栱中，形状像斗的部件叫什么？</p >
+      <button onclick="checkAnswer(0, 2)">斗</button>
+      <button onclick="checkAnswer(1, 2)">拱</button>
+      <button onclick="checkAnswer(2, 2)">昂</button>
+      <p id="result2"></p >
+    </div>
+    <p id="finalScore">你的最终得分: 0</p >
+  </div>
+
+  <script>
+    let score = 0;
+    function checkAnswer(selectedIndex, questionNumber) {
+      const correctAnswers = [1, 0]; // 正确答案的索引，对应每个问题
+      if (selectedIndex === correctAnswers[questionNumber - 1]) {
+        score++;
+        document.getElementById(`result${questionNumber}`).innerHTML = "回答正确！";
+      } else {
+        document.getElementById(`result${questionNumber}`).innerHTML = "回答错误！";
+      }
+      document.getElementById("finalScore").innerHTML = `你的最终得分: ${score}/2`;
+    }
+  </script>
+</body>
+</html> 
